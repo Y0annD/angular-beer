@@ -1,15 +1,32 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="AngularBeer">
 <head>
   <meta charset="utf-8">
   <title>Angular Beer Gallery</title>
   <link rel="stylesheet" href="lib/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <script src="lib/angular.js"></script>
+  <script src="js/controllers.js"></script>
 </head>
 <body>
 
+<div ng-controller="BeerListCtrl">
 
+  Hello {{name}}<br />
 
+  <ul>
+    <li ng-repeat="beer in beers">
+      <span>{{beer.name}}</span>
+      <p>{{beer.description}}</p>
+    </li>
+  </ul>
+
+  <p>Number of beers: {{beers.length}}</p>
+
+  <table>
+    <tr><th ng-repeat="i in [0,1,2,3,4,5,6,7]">Row {{i+1}}</th></tr>
+    <tr ng-repeat="i in [0,1,2,3,4,5,6,7]"><td ng-repeat="f in [0,1,2,3,4,5,6,7]">{{i+f+2}}</td></tr>
+  </table>
+</div>
 </body>
 </html>
