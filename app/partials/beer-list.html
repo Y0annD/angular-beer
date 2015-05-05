@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-2">
+    <input type="text" ng-model="search" placeholder="Search a beer"/>
+    <select ng-model="orderProp">
+      <option value="name">Alphabetical</option>
+      <option value="alcohol">Alcohol content</option>
+      <option value="-age">Oldest</option>
+    </select>
+  </div>
+  <div class="col-md-10">
+    Hello {{name}}<br /><span ng-show="search">Query: {{search}}</span>
+    <ul>
+      <li ng-repeat="beer in beers | filter:search | orderBy:orderProp" class="thumbnail">
+        <a href="#/beers/{{beer.id}}" class="thumb"><img ng-src="{{beer.img}}" alt="beer img"</img></a>
+        <a href="#/beers/{{beer.id}}">{{beer.name}}</a>
+        <span>{{beer.description}}</p>
+
+
+      </li>
+    </ul>
+
+    <p>Number of beers: {{beers.length}}</p>
+  </div>
+</div>

@@ -2,11 +2,11 @@
 
 /* Controllers */
 angular
-  .module('AngularBeer', [])
+  .module('BeerControllers', [])
   .controller('BeerListCtrl', ['$scope', '$http',  function($scope, $http) {
     /* List of beers */
     $http.get('beers/beers.json').success(function(data, status){
-      $scope.beers = data.splice(0, 5);;
+      $scope.beers = data;
     })
     .error(function(data, status){
       alert("error: "+status);
@@ -16,4 +16,7 @@ angular
     $scope.orderProp = 'alcohol';
     /* Name variable */
     $scope.name= "Angular beers";
+  }])
+  .controller('BeerDetailCtrl',['$scope','$routeParams', function($scope, $routeParams){
+    $scope.beerId = $routeParams.beerId;
   }]);
