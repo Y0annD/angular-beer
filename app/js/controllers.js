@@ -23,6 +23,8 @@ angular
       }
     ];
 
+    /* order by */
+    $scope.orderProp = 'alcohol';
     /* Name variable */
     $scope.name= "Angular beers";
   }]);
