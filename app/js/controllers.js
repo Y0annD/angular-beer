@@ -17,6 +17,8 @@ angular
     /* Name variable */
     $scope.name= "Angular beers";
   }])
-  .controller('BeerDetailCtrl',['$scope','$routeParams', function($scope, $routeParams){
-    $scope.beerId = $routeParams.beerId;
+  .controller('BeerDetailCtrl',['$scope','$routeParams', '$http',function($scope, $routeParams, $http){
+    $http.get('beers/'+$routeParams.beerId + '.json').success(function(data){
+      $scope.beer = data;
+    });
   }]);
