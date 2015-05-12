@@ -3,31 +3,22 @@
 /* Controllers */
 angular
   .module('BeerControllers', [])
-  .controller('BeerListCtrl', ['$scope', '$http',  function($scope, $http) {
+  .controller('BeerListCtrl', ['$scope', 'Beer',  function($scope, Beer) {
     /* List of beers */
-    $http.get('beers/beers.json').success(function(data, status){
-      $scope.beers = data;
-    })
-    .error(function(data, status){
-      alert("error: "+status);
-    });
+      $scope.beers = Beer.query();
 
     /* order by */
     $scope.orderProp = 'alcohol';
     /* Name variable */
     $scope.name= "Angular beers";
   }])
-  .controller('BeerDetailCtrl',['$scope','$routeParams', '$http',function($scope, $routeParams, $http){
-    $http.get('beers/'+$routeParams.beerId + '.json').success(function(data){
-        $scope.beer = data;
-        $scope.mainImg = $scope.beer.img;
+.controller('BeerDetailCtrl', ['$scope', '$routeParams', 'Beer', function($scope, $routeParams, Beer) {
 
-        $scope.setImage = function(img){
-            $scope.mainImg = img;
-        }
-
-        $scope.hello = function(name) {
-            alert('Hello ' + (name || 'world') + '!');
-        }
+    $scope.beer = Beer.get({beerId: $routeParams.beerId}, function(beer) {
+      $scope.mainImg = beer.img;
     });
+
+    $scope.setImage = function(img) {
+      $scope.mainImg = img;
+    }
   }]);
