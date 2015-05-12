@@ -1,13 +1,13 @@
-<img ng-src="{{beer.img}}" class="beer">
+<img ng-src="{{mainImg}}" class="beer">
   <h1>{{beer.name}}</h1>
   <p>{{beer.description}}</p>
 
   <ul class="beer-thumbs">
     <li>
-      <img ng-src="{{beer.img}}">
+      <img ng-src="{{beer.img}}" ng-click="setImage(beer.img)">
     </li>
     <li>
-      <img ng-src="{{beer.label}}">
+      <img ng-src="{{beer.label}}" ng-click="setImage(beer.label)">
     </li>
   </ul>
 
@@ -31,3 +31,5 @@
       </dl>
     </li>
   </ul>
+
+  <button ng-click="hello('Elmo')">Hello</button>
